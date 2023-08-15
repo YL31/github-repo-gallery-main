@@ -2,6 +2,7 @@
 const overview = document.querySelector(".overview");
 const showRepoList = document.querySelector(".repo-list");
 const username = "YL31";
+const 
 
 const getProfile = async function () {
     const userInfo = await fetch(`https://api.github.com/users/${username}`);
@@ -28,8 +29,8 @@ const displayUserInfo = function (data) {
 
 const fetchRepos = async function () {
     const repoList = await fetch (`https://api.github.com/users/${username}/repos?visibility=public&sort=updated&per_page=100`);
-    const repoData = await repoList.json();
-    displayRepoInfo(repoData);
+    const repos = await repoList.json();
+    displayRepoInfo(repos);
 };
 
 const displayRepoInfo = function (repos) {
