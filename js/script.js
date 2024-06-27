@@ -9,16 +9,16 @@ const username = "YL31";
 
 
 const getProfile = async function () {
-    const userInfo = await fetch(`https://api.github.com/users/${username}`);
-    const data = await userInfo.json();
-    displayUserInfo(data);
+  const userInfo = await fetch(`https://api.github.com/users/${username}`);
+  const data = await userInfo.json();
+  displayUserInfo(data);
 };
 getProfile();
 
 const displayUserInfo = function (data) {
-    const userDiv = document.createElement("div");
-    userDiv.classList.add("user-info");
-    userDiv.innerHTML = `<figure>
+  const userDiv = document.createElement("div");
+  userDiv.classList.add("user-info");
+  userDiv.innerHTML = `<figure>
       <img alt="user avatar" src=${data.avatar_url} />
     </figure>
     <div>
@@ -27,14 +27,14 @@ const displayUserInfo = function (data) {
       <p><strong>Location:</strong> ${data.location}</p>
       <p><strong>Number of public repos:</strong> ${data.public_repos}</p>
     </div>`;
-    overview.append(userDiv);
-    fetchRepos();
+  overview.append(userDiv);
+  fetchRepos();
 };
 
 const fetchRepos = async function () {
-    const repoList = await fetch (`https://api.github.com/users/${username}/repos?visibility=public&sort=updated&per_page=100`);
-    const repos = await repoList.json();
-    displayRepoInfo(repos);
+  const repoList = await fetch(`https://api.github.com/users/${username}/repos?visibility=public&sort=updated&per_page=100`);
+  const repos = await repoList.json();
+  displayRepoInfo(repos);
 };
 
 const displayRepoInfo = function (repos) {
@@ -79,9 +79,8 @@ const displaySpecificInfo = function (repoInfo, languages) {
   <p>Description: ${repoInfo.description}</p>
   <p>Default Branch: ${repoInfo.default_branch}</p>
   <p>Languages: ${languages.join(", ")}</p>
-  <a class="visit" href="${
-    repoInfo.html_url
-  }" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`;
+  <a class="visit" href="${repoInfo.html_url
+    }" target="_blank" rel="noreferrer noopener">View Repo on GitHub!</a>`;
   repoData.append(repoDiv);
   repoData.classList.remove("hide");
   repoSection.classList.add("hide");
